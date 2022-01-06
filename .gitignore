@@ -3,3 +3,5 @@
 .gitattributes
 django-web-app\env\
 .idea\
+django-web-app\env
+django-web-app/env

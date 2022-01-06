@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def homepage(request):
-    return HttpResponse('<h1>Hello Django!</h1>')
+    return render(request, 'app/homepage.html')
 
 def registration(request):
     return HttpResponse('<h1>Hello Django!</h1>')

@@ -1,5 +1,5 @@
 .gitignore
 .idea
 .gitattributes
-env
+django-web-app\env\
 .idea\

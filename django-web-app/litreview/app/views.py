@@ -4,7 +4,7 @@ from . import forms
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
-
+from django.conf import settings
 
 
 
@@ -40,8 +40,18 @@ def logout_user(request):
 def home(request):
     return render(request, 'app/home.html')
 
-def registration(request):
-    return HttpResponse('<h1>Hello Django!</h1>')
+
+def signup_page(request):
+    form = forms.SignupForm()
+    if request.method == 'POST':
+        form = forms.SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # auto-login user
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+
+    return render(request, 'app/signup.html', context={'form': form})
 
 
 def flux(request):

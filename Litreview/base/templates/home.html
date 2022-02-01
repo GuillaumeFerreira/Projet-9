@@ -9,7 +9,7 @@
                         <li><a href="#">Posts</a></li>
                         <li><a href="#">Abonnements</a></li>
                     </ul>
-                    <p class="user"><b>{{ request.user }} </b></b><a href="{% url 'logout' %}">Se déconnecter</a></p>
+                    <p class="user"><b>{{ request.user }} </b></b><a href="{% url 'logout' %}"><button>Se déconnecter</button></a></p>
                 </div>
             </div>
             {% endif %}

@@ -3,13 +3,23 @@ from django.http import HttpResponse
 from . import forms
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View
+from django.views.generic import View, CreateView, TemplateView
 from django.conf import settings
+from django.contrib.auth.views import LoginView
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class LoginPageView(LoginView):
+
+    template_name = 'base/login.html'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse('home')
 
 
-
-class LoginPageView(View):
-    template_name = 'app/login.html'
+class LoginPageView_old(View):
+    template_name = 'base/login.html'
     form_class = forms.LoginForm
 
     def get(self, request):
@@ -31,14 +41,24 @@ class LoginPageView(View):
         return render(request, self.template_name, context={'form': form, 'message': message})
 
 
+class TicketCreateView(CreateView):
+
+    form_class = forms.TicketForm
+    sucess_url = reverse_lazy('home')
+
+
 def logout_user(request):
     logout(request)
     return redirect('login')
 
 
+class HomeView(LoginRequiredMixin, TemplateView):
+
+   template_name = 'base/home.html'
+
 @login_required
 def home(request):
-    return render(request, 'app/home.html')
+    return render(request, 'base/home.html')
 
 
 def signup_page(request):
@@ -51,7 +71,7 @@ def signup_page(request):
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
 
-    return render(request, 'app/signup.html', context={'form': form})
+    return render(request, 'base/signup.html', context={'form': form})
 
 
 def flux(request):

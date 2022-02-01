@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="cont">
+    <div id="container" class="left">
+        <form>
+            <h1>Inscrivez-vous maintenant</h1>
+            <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+        </form>
+        </div>
+        <div id="container" class="right">
+        <!-- zone de connexion -->
+        <form method="post">
+            <h1>Connectez-vous</h1>
+            <p>{{ message }}</p>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Se connecter</button>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

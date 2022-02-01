@@ -1,4 +1,4 @@
-"""litreview URL Configuration
+"""ticket URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -15,17 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app import views
-from django.contrib.auth.views import LoginView
+from base import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LoginView.as_view(
-        template_name='app/login.html',
-        redirect_authenticated_user=True),
-         name='login'),
+    path('', views.LoginPageView.as_view(), name='login'),
     path('logout/', views.logout_user, name='logout'),
-    path('home/', views.home, name='home'),
+    path('home/', views.HomeView.as_view(), name='home'),
     path('signup/', views.signup_page, name='signup'),
     path('flux/', views.flux),
     path('subscriptions/', views.subscriptions),

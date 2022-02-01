@@ -126,3 +126,16 @@ input[type=submit]:hover {
     color: #066FB3;
     border: 1px solid #066FB3;
 }
+li ,a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items:  center;
+    padding: 30px 10%;
+}

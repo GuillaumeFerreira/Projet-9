@@ -40,7 +40,7 @@ body{
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items:  center;
     padding: 30px 10%;
 
@@ -129,13 +129,12 @@ input[type=submit]:hover {
     color: #066FB3;
     border: 1px solid #066FB3;
 }
-li ,a {
+#card-top li ,a {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 500;
     font-size: 16px;
     text-decoration: none;
 }
-
 .nav_links{
     list-style: none;
 }
@@ -148,4 +147,16 @@ li ,a {
 }
 .nav_links li a:hover{
     color: #4F9AB8;
-   }
+}
+#card-top button {
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: #fff;
+}
+#card-top button:hover{
+    background-color: rgba(0,136,169,0.7);
+}

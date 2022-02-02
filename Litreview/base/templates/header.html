@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {%  if user.is_authenticated %}
+    <div id="cont-home">
+        <div id="card-top">
+            <h2>LITReview</h2>
+            <ul class="nav_links">
+                <li><a href="#">Flux</a></li>
+                <li><a href="#">Posts</a></li>
+                <li><a href="#">Abonnements</a></li>
+            </ul>
+            <p class="user"><b>{{ request.user }} </b></b><a href="{% url 'logout' %}"><button>Se déconnecter</button></a></p>
+        </div>
+    </div>
+{% endif %}
+{% endblock content %}

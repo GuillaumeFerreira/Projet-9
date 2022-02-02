@@ -16,9 +16,6 @@ class LoginPageView(LoginView):
     def get_success_url(self):
         return reverse('home')
 
-@login_required
-def home(request):
-    return render(request, 'home.html')
 
 def logout_user(request):
     logout(request)
@@ -27,7 +24,7 @@ def logout_user(request):
 
 class HomeView(LoginRequiredMixin, TemplateView):
 
-   template_name = 'home.html'
+   template_name = 'header.html'
 
 
 def signup_page(request):

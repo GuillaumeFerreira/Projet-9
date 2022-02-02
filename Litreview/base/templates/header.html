@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block content %}
+
+{% block header %}
     {%  if user.is_authenticated %}
-    <div id="cont-home">
+    <div id="cont-header">
         <div id="card-top">
             <h2>LITReview</h2>
             <ul class="nav_links">
@@ -14,4 +14,4 @@
         </div>
     </div>
 {% endif %}
-{% endblock content %}
+{% endblock header %}

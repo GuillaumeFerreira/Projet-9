@@ -24,7 +24,7 @@ def logout_user(request):
 
 class HomeView(LoginRequiredMixin, TemplateView):
 
-   template_name = 'header.html'
+   template_name = 'home.html'
 
 
 def signup_page(request):

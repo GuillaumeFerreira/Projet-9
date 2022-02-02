@@ -10,17 +10,13 @@ body{
     width:80%;
     margin:10%;
 }
-#cont-home{
+#cont-header{
     width:80%;
     margin-left: auto;
     margin-right: auto;
 }
 #container{
     width:45%;
-
-
-
-
 }
 
 #card{
@@ -30,6 +26,40 @@ body{
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 20px;
+
+}
+#cont-home{
+    margin: 3%;
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+}
+#cont-home button{
+
+    padding: 9px 25px;
+    background-color: #838FC0;
+    border: 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: #FFF;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#cont-home button:hover{
+
+    padding: 9px 25px;
+    background-color: #838FC0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: #FFF;
+    opacity: 0.7;
 
 }
 #card-top{

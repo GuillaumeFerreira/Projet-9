@@ -66,29 +66,16 @@ class Followers(LoginRequiredMixin, FormView):
 
     template_name = "subscription.html"
     success_url = reverse_lazy("subscription")
-    # model = models.UserFollows
     form_class = forms.FollowsForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs["user"] = self.request.user
-
-        # kwargs['followed_user'] = User.objects.get(username=self.fields.values('followed_user'))
-        # kwargs['followed_user'] = User.objects.get(username=self.request.data)
         return kwargs
 
     def form_valid(self, form):
-
         form.save()
-
         return super().form_valid(form)
-
-    # def get_context_data(self, **kwargs):
-    # context = super().get_context_data(**kwargs)
-    # context['userfollows'] = models.UserFollows.objects.filter(user=self.request.user)
-    # context['userfollows'] = self.request.user.following.all()
-    # context['abonnes'] = models.UserFollows.objects.filter(followed_user=self.request.user)
-    # return context
 
 
 class FollowerDeleteView(DeleteView):
@@ -108,5 +95,4 @@ class MyPostsView(LoginRequiredMixin, TemplateView):
         context["tickets"] = Ticket.objects.filter(user=self.request.user).order_by(
             "time_created"
         )
-
         return context

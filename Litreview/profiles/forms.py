@@ -12,17 +12,10 @@ class SignupForm(UserCreationForm):
 
 class FollowsForm(Form):
 
-    # followed_user = CharField(label='')
     search_user = CharField(label="")
-
-    # class Meta:
-    # model = models.UserFollows
-    # fields = ['followed_user']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
-        # self.followed_user = kwargs["followed_user"]
-
         super().__init__(*args, **kwargs)
 
     def save(self):
@@ -30,12 +23,6 @@ class FollowsForm(Form):
         user_follow = models.UserFollows.objects.create(
             user=self.user, followed_user=self.cleaned_data["search_user"]
         )
-
-        # self.instance.user = self.user
-        # self.instance.followed_user = self.cleaned_data['search_user']
-
-        # followed_user = super().save()
-
         return user_follow
 
     def clean_search_user(self):

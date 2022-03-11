@@ -43,7 +43,6 @@ class CreateReviewFromTicketViews(LoginRequiredMixin, CreateView):
     model = models.Review
     template_name = "create_Review_from_ticket.html"
     success_url = reverse_lazy("home")
-    # fields = ['headline', 'rating', 'body']
     form_class = forms.ReviewUpdateForm
 
     rating = ChoiceField(
@@ -61,7 +60,6 @@ class CreateReviewFromTicketViews(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context["ticket"] = self.ticket
         return context
 
@@ -72,12 +70,6 @@ class CreateTicketReviewViews(LoginRequiredMixin, CreateView):
     template_name = "create_ticket_Review.html"
     success_url = reverse_lazy("home")
     form_class = forms.TicketCritiqueForm
-
-    # def form_valid(self, form):
-    #     ticket = form.save(commit=True)
-    #     ticket.user = self.request.user
-    #     ticket.save()
-    #     return super().form_valid(form)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

@@ -15,6 +15,18 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+#cont-flux{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+    align-items:  center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
 #container{
     width:45%;
 }
@@ -27,6 +39,24 @@ body{
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 20px;
 
+}
+
+.ticket{
+    position: relative;
+    width:80%;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+
+}
+.ticket img{
+  width: auto;
+  height: 50%;
+  margin-left: 20px;
 }
 #cont-home{
     margin: 3%;

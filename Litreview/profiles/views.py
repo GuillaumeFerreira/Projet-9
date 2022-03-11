@@ -1,35 +1,59 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.views import LoginView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import View, CreateView, TemplateView
-from . import forms
+from django.views.generic import View, CreateView, TemplateView, FormView, DeleteView
+from . import forms, models
+from ticket.models import Ticket, Review
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+
 
 class LoginPageView(LoginView):
 
-    template_name = 'login.html'
+    template_name = "login.html"
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse("home")
 
 
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect("login")
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
 
-   template_name = 'home.html'
+    template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["followed_user"] = models.UserFollows.objects.filter(
+            user=self.request.user
+        )
+        followed_users = []
+        for follow in context["followed_user"]:
+            followed_users.append(follow.followed_user)
+        context["reviews"] = Review.objects.filter(user__in=followed_users).order_by(
+            "time_created"
+        )
+
+        context["tickets"] = Ticket.objects.filter(user__in=followed_users).order_by(
+            "time_created"
+        )
+
+        return context
 
 
 def signup_page(request):
     form = forms.SignupForm()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = forms.SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
@@ -37,4 +61,54 @@ def signup_page(request):
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
 
-    return render(request, 'signup.html', context={'form': form})
+    return render(request, "signup.html", context={"form": form})
+
+
+class Followers(LoginRequiredMixin, FormView):
+
+    template_name = "subscription.html"
+    success_url = reverse_lazy("subscription")
+    # model = models.UserFollows
+    form_class = forms.FollowsForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+
+        # kwargs['followed_user'] = User.objects.get(username=self.fields.values('followed_user'))
+        # kwargs['followed_user'] = User.objects.get(username=self.request.data)
+        return kwargs
+
+    def form_valid(self, form):
+
+        form.save()
+
+        return super().form_valid(form)
+
+    # def get_context_data(self, **kwargs):
+    # context = super().get_context_data(**kwargs)
+    # context['userfollows'] = models.UserFollows.objects.filter(user=self.request.user)
+    # context['userfollows'] = self.request.user.following.all()
+    # context['abonnes'] = models.UserFollows.objects.filter(followed_user=self.request.user)
+    # return context
+
+
+class FollowerDeleteView(DeleteView):
+    model = models.UserFollows
+    success_url = reverse_lazy("subscription")
+
+
+class MyPostsView(LoginRequiredMixin, TemplateView):
+
+    template_name = "posts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reviews"] = Review.objects.filter(user=self.request.user).order_by(
+            "time_created"
+        )
+        context["tickets"] = Ticket.objects.filter(user=self.request.user).order_by(
+            "time_created"
+        )
+
+        return context

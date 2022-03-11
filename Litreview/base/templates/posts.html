@@ -1,13 +1,11 @@
 {% extends 'header.html' %}
 {% block content %}
- <div id="cont-home">
-     <button><a href="{% url 'create_ticket' %}">Demander une critique</a></button>
-     <button><a href="{% url 'create_ticket_review' %}">Créer une critique</a></button>
- </div>
+
 
 
 {% for review in reviews %}
-
+<div id="cont-home">
+</div>
         <div id="cont-flux">
             <p>{{ review.user }} a écrit une critique  | {{ review.time_created }}</p>
             <p>{{ review.headline }}  {{ review.rating }}</p>
@@ -18,16 +16,22 @@
                 <p>{{ review.ticket.description }}</p>
                 <img src="{{ review.ticket.image.url }}">
             </div>
+            <a href="{% url 'update_review' review.pk %} ">Modifier</a>
+             <form method="post" action="{% url 'delete_review' review.pk %} ">{% csrf_token %}<button type="submit">Supprimer</button></form>
         </div>
 
 {% endfor %}
 {% for ticket in tickets %}
-    <div class="ticket">
+
+            <div class="ticket">
                 <p>Ticket - {{ ticket.user }} | {{ ticket.time_created }}</p>
                 <p>{{ ticket.title }}</p>
                 <p>{{ ticket.description }}</p>
                 <img src="{{ ticket.image.url }}">
-            <a href="{% url 'create_review_from_ticket' ticket.pk %}">Créer une critique</a>
-            </div>
+
+            <a href="{% url 'update_ticket' ticket.pk %} ">Modifier</a>
+             <form method="post" action="{% url 'delete_ticket' ticket.pk %} ">{% csrf_token %}<button type="submit">Supprimer</button></form>
+                </div>
+
 {% endfor %}
 {% endblock content %}

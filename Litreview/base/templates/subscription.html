@@ -1,0 +1,23 @@
+{% extends 'header.html' %}
+{% block content %}
+    <h2></h2>
+    <form method="post" enctype="multipart/form-data">
+        <h3>Suivre les utilisateurs </h3>
+        {{ form.as_p }}
+        {% csrf_token %}
+
+        <button type="submit" >Envoyer</button>
+    </form>
+
+        <h3>Abonnements</h3>
+        {% for userfollow in user.following.all %}
+            <p>{{ userfollow.followed_user }}</p><form method="post" action="{% url 'delete_follower' userfollow.pk %} ">{% csrf_token %}<button type="submit" >désabonner</button></form>
+        {% endfor %}
+
+        <h3>Abonnés</h3>
+        {% for abonne in user.followed_by.all %}
+            <p>{{ abonne.user }}</p>
+        {% endfor %}
+
+
+{% endblock content %}

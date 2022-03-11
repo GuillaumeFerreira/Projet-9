@@ -21,7 +21,7 @@ class TicketCritiqueForm(ModelForm):
     )
     headline = CharField()
     body = CharField(widget=Textarea)
-    # rating = IntegerField(min_value=0, max_value=5)
+
 
     class Meta:
         model = models.Ticket

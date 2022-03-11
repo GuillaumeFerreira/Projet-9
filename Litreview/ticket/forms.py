@@ -1,7 +1,5 @@
-from django.forms import ModelForm, CharField, Textarea, IntegerField, ChoiceField
+from django.forms import ModelForm, CharField, Textarea, ChoiceField
 from . import models
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import PositiveSmallIntegerField, TextField
 
 
 class ReviewForm(ModelForm):

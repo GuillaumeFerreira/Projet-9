@@ -1,16 +1,14 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, authenticate, logout
+
+from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import View, CreateView, TemplateView, FormView, DeleteView
+from django.views.generic import TemplateView, FormView, DeleteView
 from . import forms, models
 from ticket.models import Ticket, Review
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
 
 
 class LoginPageView(LoginView):

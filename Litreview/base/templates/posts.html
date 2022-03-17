@@ -16,8 +16,9 @@
                 <p>{{ review.ticket.description }}</p>
                 <img src="{{ review.ticket.image.url }}">
             </div>
-            <a href="{% url 'update_review' review.pk %} ">Modifier</a>
-             <form method="post" action="{% url 'delete_review' review.pk %} ">{% csrf_token %}<button type="submit">Supprimer</button></form>
+
+            <form method="post" action="{% url 'delete_review' review.pk %} "><a href="{% url 'update_review' review.pk %} ">Modifier</a>{% csrf_token %}<button type="submit">Supprimer</button></form>
+
         </div>
 
 {% endfor %}
@@ -29,8 +30,8 @@
                 <p>{{ ticket.description }}</p>
                 <img src="{{ ticket.image.url }}">
 
-            <a href="{% url 'update_ticket' ticket.pk %} ">Modifier</a>
-             <form method="post" action="{% url 'delete_ticket' ticket.pk %} ">{% csrf_token %}<button type="submit">Supprimer</button></form>
+
+             <form method="post" action="{% url 'delete_ticket' ticket.pk %} "><a href="{% url 'update_ticket' ticket.pk %} ">Modifier</a>{% csrf_token %}<button type="submit">Supprimer</button></form>
                 </div>
 
 {% endfor %}

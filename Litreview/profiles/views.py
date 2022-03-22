@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
-
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.urls import reverse

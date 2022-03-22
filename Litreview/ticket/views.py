@@ -18,10 +18,10 @@ class UpdateTicketViews(LoginRequiredMixin, UpdateView):
 class UpdateReviewViews(LoginRequiredMixin, UpdateView):
 
     model = models.Review
-    fields = ["headline", "rating", "body"]
     template_name = "update_review.html"
     success_url = reverse_lazy("home")
     template_name_suffix = "_update_form"
+    form_class = forms.ReviewUpdateForm
 
 
 class CreateTicketViews(LoginRequiredMixin, CreateView):
@@ -43,13 +43,9 @@ class CreateReviewFromTicketViews(LoginRequiredMixin, CreateView):
     model = models.Review
     template_name = "create_Review_from_ticket.html"
     success_url = reverse_lazy("home")
-    form_class = forms.ReviewUpdateForm
+    form_class = forms.ReviewCreateForm
 
-    rating = ChoiceField(
-        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
-    )
-    headline = CharField()
-    body = CharField(widget=Textarea)
+
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

@@ -46,7 +46,12 @@ class TicketCritiqueForm(ModelForm):
         return ticket
 
 
-class ReviewUpdateForm(ModelForm):
+class ReviewCreateForm(ModelForm):
+
+    rating = ChoiceField(
+        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
+    )
+
     class Meta:
         model = models.Review
         fields = ["headline", "rating", "body"]
@@ -61,3 +66,14 @@ class ReviewUpdateForm(ModelForm):
         self.instance.user = self.user
 
         return super().save()
+
+class ReviewUpdateForm(ModelForm):
+
+    rating = ChoiceField(
+        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
+    )
+
+    class Meta:
+        model = models.Review
+        fields = ["headline", "rating", "body"]
+

@@ -8,11 +8,11 @@
 
 {% for review in reviews %}
 
-        <div id="cont-flux">
-            <p>{{ review.user }} a écrit une critique  | {{ review.time_created }}</p>
-            <p>{{ review.headline }}  {{ review.rating }}</p>
-            <p>{{ review.body }}</p>
-            <div class="ticket">
+  <div id="cont-flux">
+    <p>{{ review.user }} a écrit une critique  | {{ review.time_created }}</p>
+    <p>{{ review.headline }}  {{ review.rating }}</p>
+    <p>{{ review.body }}</p>
+      <div class="ticket">
                 <p>Ticket - {{ review.ticket.user }} | {{ review.ticket.time_created }}</p>
                 <p>{{ review.ticket.title }}</p>
                 <p>{{ review.ticket.description }}</p>
@@ -23,11 +23,11 @@
 {% endfor %}
 {% for ticket in tickets %}
     <div class="ticket">
-                <p>Ticket - {{ ticket.user }} | {{ ticket.time_created }}</p>
-                <p>{{ ticket.title }}</p>
-                <p>{{ ticket.description }}</p>
-                <img src="{{ ticket.image.url }}">
-            <a href="{% url 'create_review_from_ticket' ticket.pk %}">Créer une critique</a>
-            </div>
+        <p>Ticket - {{ ticket.user }} | {{ ticket.time_created }}</p>
+        <p>{{ ticket.title }}</p>
+        <p>{{ ticket.description }}</p>
+        <img src="{{ ticket.image.url }}">
+        <a href="{% url 'create_review_from_ticket' ticket.pk %}">Créer une critique</a>
+    </div>
 {% endfor %}
 {% endblock content %}

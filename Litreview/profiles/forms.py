@@ -34,5 +34,7 @@ class FollowsForm(Form):
         else:
 
             self.cleaned_data["search_user"] = User.objects.get(username=search)
+            if models.UserFollows.objects.filter(followed_user=self.cleaned_data["search_user"]).exists():
+                raise ValidationError("Utilisateur déjà abonné")
 
         return self.cleaned_data["search_user"]

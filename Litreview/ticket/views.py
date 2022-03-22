@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.forms import CharField, Textarea, ChoiceField
+
 
 
 class UpdateTicketViews(LoginRequiredMixin, UpdateView):
@@ -19,7 +19,7 @@ class UpdateReviewViews(LoginRequiredMixin, UpdateView):
 
     model = models.Review
     template_name = "update_review.html"
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("posts")
     template_name_suffix = "_update_form"
     form_class = forms.ReviewUpdateForm
 

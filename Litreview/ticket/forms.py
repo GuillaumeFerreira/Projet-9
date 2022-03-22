@@ -1,4 +1,4 @@
-from django.forms import ModelForm, CharField, Textarea, ChoiceField
+from django.forms import ModelForm, CharField, Textarea, ChoiceField, RadioSelect
 from . import models
 
 
@@ -49,8 +49,8 @@ class TicketCritiqueForm(ModelForm):
 class ReviewCreateForm(ModelForm):
 
     rating = ChoiceField(
-        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
-    )
+        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)],
+        widget=RadioSelect)
 
     class Meta:
         model = models.Review
@@ -70,8 +70,8 @@ class ReviewCreateForm(ModelForm):
 class ReviewUpdateForm(ModelForm):
 
     rating = ChoiceField(
-        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
-    )
+        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)],
+        widget=RadioSelect)
 
     class Meta:
         model = models.Review

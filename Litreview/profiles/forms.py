@@ -30,7 +30,7 @@ class FollowsForm(Form):
         search = self.cleaned_data["search_user"]
         User = get_user_model()
         if not User.objects.filter(username=search).exists():
-            raise ValidationError("user not found")
+            raise ValidationError("L'utilisateur n'existe pas")
         else:
 
             self.cleaned_data["search_user"] = User.objects.get(username=search)

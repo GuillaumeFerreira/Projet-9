@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, DeleteView
+from django.views.generic import TemplateView, FormView, DeleteView, View
 from . import forms, models
 from ticket.models import Ticket, Review
 from django.urls import reverse_lazy
@@ -20,9 +20,12 @@ class LoginPageView(LoginView):
         return reverse("home")
 
 
-def logout_user(request):
-    logout(request)
-    return redirect("login")
+class LogoutView(View):
+
+    def get(self, request):
+        logout(request)
+        return redirect("login")
+
 
 
 class HomeView(LoginRequiredMixin, TemplateView):

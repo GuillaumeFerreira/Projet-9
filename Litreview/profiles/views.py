@@ -4,10 +4,11 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, DeleteView, View
+from django.views.generic import TemplateView, FormView, DeleteView, View, CreateView
 from . import forms, models
 from ticket.models import Ticket, Review
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
 
 
 class LoginPageView(LoginView):
@@ -49,6 +50,15 @@ class HomeView(LoginRequiredMixin, TemplateView):
         )
 
         return context
+
+
+class SignupPage(TemplateView):
+
+    form_class = forms.SignupForm()
+    template_name = "signup.html"
+    success_url = reverse_lazy("home")
+
+
 
 
 def signup_page(request):

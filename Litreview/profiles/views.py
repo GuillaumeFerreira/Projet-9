@@ -8,9 +8,9 @@ from django.views.generic import TemplateView, FormView, DeleteView, View, Creat
 from . import forms, models
 from ticket.models import Ticket, Review
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
-
-
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm, User
+from django.forms import CharField, PasswordInput
 class LoginPageView(LoginView):
 
     template_name = "login.html"
@@ -52,9 +52,11 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class SignupPage(TemplateView):
+class SignupPage(CreateView):
 
-    form_class = forms.SignupForm()
+    password = CharField(widget=PasswordInput())
+    model = User
+    fields = ("username", "password")
     template_name = "signup.html"
     success_url = reverse_lazy("home")
 

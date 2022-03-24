@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth import login, logout
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView, DeleteView, View, CreateView
@@ -20,7 +20,7 @@ class LoginPageView(LoginView):
         return reverse("home")
 
 
-class LogoutView(View):
+class LogoutPageView(LogoutView):
 
     def get(self, request):
         logout(request)

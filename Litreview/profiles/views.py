@@ -13,6 +13,8 @@ from django.contrib.auth.forms import UserCreationForm, User
 from django.forms import CharField, PasswordInput
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
+from itertools import chain
+
 
 class LoginPageView(LoginView):
 
@@ -25,9 +27,8 @@ class LoginPageView(LoginView):
 
 class LogoutPageView(LogoutView):
 
-    def get(self, request):
-        logout(request)
-        return redirect("login")
+    next_page = reverse_lazy('login')
+
 
 
 
@@ -44,12 +45,19 @@ class HomeView(LoginRequiredMixin, TemplateView):
         followed_users = []
         for follow in context["followed_user"]:
             followed_users.append(follow.followed_user)
+
         context["reviews"] = Review.objects.filter(user__in=followed_users).order_by(
             "time_created"
         )
 
         context["tickets"] = Ticket.objects.filter(user__in=followed_users).order_by(
             "time_created"
+        )
+
+        context["post"] = sorted(
+            chain(context["reviews"], context["tickets"]),
+            key=lambda post: post.time_created,
+            reverse=True
         )
 
         return context
@@ -60,7 +68,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
   template_name = 'signup.html'
   success_url = reverse_lazy('home')
   form_class = forms.SignupForm
-  success_message = "Your profile was created successfully"
+  success_message = "%(username)s was created successfully"
 
 def signup_page(request):
     form = forms.SignupForm()

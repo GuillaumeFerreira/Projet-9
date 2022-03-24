@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+
     path("", profiles.views.LoginPageView.as_view(), name="login"),
-    path("logout/", profiles.views.LogoutPageView.as_view(), name="logout"),
+    path("logout", profiles.views.LogoutPageView.as_view(), name="logout"),
     path("home/", profiles.views.HomeView.as_view(), name="home"),
     path("signup/", profiles.views.SignUpView.as_view(), name="signup"),
     path(
@@ -67,6 +67,7 @@ urlpatterns = [
         ticket.views.CreateReviewFromTicketViews.as_view(),
         name="create_review_from_ticket",
     ),
+    path("admin/", admin.site.urls),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

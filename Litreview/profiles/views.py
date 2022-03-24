@@ -11,6 +11,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, User
 from django.forms import CharField, PasswordInput
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.forms import UserCreationForm
+
 class LoginPageView(LoginView):
 
     template_name = "login.html"
@@ -61,7 +64,11 @@ class SignupPage(CreateView):
     success_url = reverse_lazy("home")
 
 
-
+class SignUpView(SuccessMessageMixin, CreateView):
+  template_name = 'signup.html'
+  success_url = reverse_lazy('home')
+  form_class = forms.SignupForm
+  success_message = "Your profile was created successfully"
 
 def signup_page(request):
     form = forms.SignupForm()

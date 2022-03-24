@@ -26,7 +26,7 @@ urlpatterns = [
     path("", profiles.views.LoginPageView.as_view(), name="login"),
     path("logout/", profiles.views.LogoutPageView.as_view(), name="logout"),
     path("home/", profiles.views.HomeView.as_view(), name="home"),
-    path("signup/", profiles.views.SignupPage.as_view(), name="signup"),
+    path("signup/", profiles.views.SignUpView.as_view(), name="signup"),
     path(
         "create_ticket/", ticket.views.CreateTicketViews.as_view(), name="create_ticket"
     ),

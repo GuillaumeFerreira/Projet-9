@@ -55,14 +55,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class SignupPage(CreateView):
-
-    password = CharField(widget=PasswordInput())
-    model = User
-    fields = ("username", "password")
-    template_name = "signup.html"
-    success_url = reverse_lazy("home")
-
 
 class SignUpView(SuccessMessageMixin, CreateView):
   template_name = 'signup.html'

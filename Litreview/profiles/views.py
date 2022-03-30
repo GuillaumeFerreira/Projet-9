@@ -70,17 +70,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
   form_class = forms.SignupForm
   success_message = "%(username)s was created successfully"
 
-def signup_page(request):
-    form = forms.SignupForm()
-    if request.method == "POST":
-        form = forms.SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # auto-login user
-            login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
 
-    return render(request, "signup.html", context={"form": form})
 
 
 class Followers(LoginRequiredMixin, FormView):

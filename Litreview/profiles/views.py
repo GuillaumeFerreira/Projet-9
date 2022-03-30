@@ -54,7 +54,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
             "time_created"
         )
 
-        context["post"] = sorted(
+        context["posts"] = sorted(
             chain(context["reviews"], context["tickets"]),
             key=lambda post: post.time_created,
             reverse=True

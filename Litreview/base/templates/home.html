@@ -5,29 +5,30 @@
      <button><a href="{% url 'create_ticket_review' %}">Créer une critique</a></button>
  </div>
 
+{% for post in posts %}
 
-{% for review in reviews %}
-
-  <div id="cont-flux">
-    <p>{{ review.user }} a écrit une critique  | {{ review.time_created }}</p>
-    <p>{{ review.headline }}  {{ review.rating }}</p>
-    <p>{{ review.body }}</p>
-      <div class="ticket">
-                <p>Ticket - {{ review.ticket.user }} | {{ review.ticket.time_created }}</p>
-                <p>{{ review.ticket.title }}</p>
-                <p>{{ review.ticket.description }}</p>
-                <img src="{{ review.ticket.image.url }}">
+    {% if post.body  %}
+          <div id="cont-flux">
+        <p>{{ post.user }} a écrit une critique  | {{ post.time_created }}</p>
+        <p>{{ post.headline }}  {{ post.rating }}</p>
+        <p>{{ post.body }}</p>
+          <div class="ticket">
+                    <p>Ticket - {{ post.ticket.user }} | {{ post.ticket.time_created }}</p>
+                    <p>{{ post.ticket.title }}</p>
+                    <p>{{ post.ticket.description }}</p>
+                    <img src="{{ post.ticket.image.url }}">
+                </div>
             </div>
+    {% else %}
+        <div class="ticket">
+            <p>Ticket - {{ post.user }} | {{ post.time_created }}</p>
+            <p>{{ post.title }}</p>
+            <p>{{ post.description }}</p>
+            <img src="{{ post.image.url }}">
+            <a href="{% url 'create_review_from_ticket' post.pk %}">Créer une critique</a>
         </div>
+    {% endif %}
+{% endfor %}
 
-{% endfor %}
-{% for ticket in tickets %}
-    <div class="ticket">
-        <p>Ticket - {{ ticket.user }} | {{ ticket.time_created }}</p>
-        <p>{{ ticket.title }}</p>
-        <p>{{ ticket.description }}</p>
-        <img src="{{ ticket.image.url }}">
-        <a href="{% url 'create_review_from_ticket' ticket.pk %}">Créer une critique</a>
-    </div>
-{% endfor %}
+
 {% endblock content %}

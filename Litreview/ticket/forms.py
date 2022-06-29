@@ -17,7 +17,7 @@ class TicketForm(ModelForm):
 class TicketCritiqueForm(ModelForm):
 
     rating = ChoiceField(
-        choices=[("0", 0), ("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
+        choices=[("1", 1), ("2", 2), ("3", 3), ("4", 4), ("5", 5)]
     )
     headline = CharField()
     body = CharField(widget=Textarea)

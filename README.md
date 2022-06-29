@@ -7,7 +7,7 @@ Application web utilisant le framework Django
 * Demander ou publier des critiques de livres ou d’articles
 ##### Activer l'environnement virtuel
 ```python 
-env\Scripts\activate.bat
+venv\Scripts\activate.bat
 ```
 #### Installer les librairies necessaires
 ```python 

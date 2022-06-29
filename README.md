@@ -1,9 +1,10 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 # Projet-9 Développez une application Web en utilisant Django
 ## Description
- ## Fonctionnalités
-* 
-* 
+Application web utilisant le framework Django
+## Fonctionnalités
+* S'incrire, se connecter, s'abonner
+* Demander ou publier des critiques de livres ou d’articles
 ##### Activer l'environnement virtuel
 ```python 
 env\Scripts\activate.bat
@@ -12,7 +13,7 @@ env\Scripts\activate.bat
 ```python 
 pip install -r requirements.txt
 ```
-#### Lancer le script
+#### Lancer le serveur
 ```python
 python manage.py runserver
 ```

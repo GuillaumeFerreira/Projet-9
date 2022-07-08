@@ -5,6 +5,8 @@ Application web utilisant le framework Django
 ## Fonctionnalités
 * S'incrire, se connecter, s'abonner
 * Demander ou publier des critiques de livres ou d’articles
+##### Télécharger le projet 
+https://github.com/GuillaumeFerreira/Projet-9/archive/refs/heads/main.zip
 ##### Créer l'environnement virtuel
 ```python 
 python -m venv env

@@ -19,8 +19,10 @@ pip install -r Litreview\requirements.txt
 ```
 #### Lancer le serveur
 ```python
-python manage.py runserver
+python Litreview\manage.py runserver
 ```
+#### Visualiser l'application sur un navigateur
+http//127.0.0.1:8000/
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **flake8** et **black**
 #### Exécuter black

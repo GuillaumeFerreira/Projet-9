@@ -11,7 +11,6 @@ git clone https://github.com/GuillaumeFerreira/Projet-9.git
 ```
 ou
 > https://github.com/GuillaumeFerreira/Projet-9/archive/refs/heads/main.zip
-##### Télécharger le projet 
 ##### Créer l'environnement virtuel
 ```python 
 python -m venv env
@@ -36,7 +35,7 @@ python Litreview\manage.py migrate
 python Litreview\manage.py runserver
 ```
 #### Visualiser l'application sur un navigateur
-http://127.0.0.1:8000/
+> http://127.0.0.1:8000/
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **flake8** et **black**
 #### Exécuter black

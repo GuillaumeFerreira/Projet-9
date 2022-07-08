@@ -34,7 +34,7 @@ python Litreview\manage.py migrate
 ```
 python Litreview\manage.py runserver
 ```
-#### Visualiser l'application sur un navigateur
+#### Visualiser l'application sur votre navigateur
 > http://127.0.0.1:8000/
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **black** et **flake8**

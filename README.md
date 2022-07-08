@@ -5,6 +5,7 @@ Application web utilisant le framework Django
 ## Fonctionnalités
 * S'incrire, se connecter, s'abonner
 * Demander ou publier des critiques de livres ou d’articles
+## Instructions détaillant la configuration
 ##### Télécharger le projet 
 ``` 
 git clone https://github.com/GuillaumeFerreira/Projet-9.git

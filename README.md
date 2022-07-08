@@ -39,10 +39,10 @@ python Litreview\manage.py runserver
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **black** et **flake8**
 #### Exécuter black
-```python
+```
 black Litreview
 ```
 #### Exécuter flake8
-```python
+```
 flake8 Litreview
 ```

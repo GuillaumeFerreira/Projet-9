@@ -14,7 +14,7 @@
 
         <h3>Abonnements</h3>
         {% for userfollow in user.following.all %}
-            <p>{{ userfollow.followed_user }}</p><form method="post" action="{% url 'delete_follower' userfollow.pk %} ">{% csrf_token %}<button type="submit" >désabonner</button></form>
+            <p>{{ userfollow.followed_user }}</p><form method="post" action="{% url 'delete_follower' userfollow.pk %} ">{% csrf_token %}<button type="submit" >Se désabonner</button></form>
         {% endfor %}
 
         <h3>Abonnés</h3>

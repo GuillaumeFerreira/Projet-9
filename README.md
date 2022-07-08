@@ -12,26 +12,26 @@ git clone https://github.com/GuillaumeFerreira/Projet-9.git
 ou
 > https://github.com/GuillaumeFerreira/Projet-9/archive/refs/heads/main.zip
 ##### Créer l'environnement virtuel
-```python 
+```
 python -m venv env
 ```
 ##### Activer l'environnement virtuel
-```python 
+``` 
 env\Scripts\activate.bat
 ```
 #### Installer les librairies necessaires
-```python 
+```
 pip install -r Litreview\requirements.txt
 ```
 #### Configuration base de données
-```python 
+```
 python Litreview\manage.py makemigrations
 ```
-```python 
+```
 python Litreview\manage.py migrate
 ```
 #### Lancer le serveur
-```python
+```
 python Litreview\manage.py runserver
 ```
 #### Visualiser l'application sur un navigateur

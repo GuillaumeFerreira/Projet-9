@@ -8,9 +8,9 @@
 </div>
         <div id="cont-flux">
             <p>{{ review.user }} a écrit une critique  | {{ review.time_created }}</p>
-            <p>{{ review.headline }}  {{ review.rating }}</p>
+            <p>{{ review.headline }} - {% include "includes/rating.html" with test=review.rating %}</p>
             <p>{{ review.body }}</p>
-            {% include "includes/rating.html" with test=review.rating %}
+
             <div class="ticket">
                 <p>Ticket - {{ review.ticket.user }} | {{ review.ticket.time_created }}</p>
                 <p>{{ review.ticket.title }}</p>

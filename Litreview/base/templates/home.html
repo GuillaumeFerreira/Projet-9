@@ -10,7 +10,7 @@
     {% if post.body  %}
           <div id="cont-flux">
         <p>{{ post.user }} a écrit une critique  | {{ post.time_created }}</p>
-        <p>{{ post.headline }}  {{ post.rating }}</p>
+        <p>{{ post.headline }}  {% include "includes/rating.html" with test=post.rating %}</p>
         <p>{{ post.body }}</p>
           <div class="ticket">
                     <p>Ticket - {{ post.ticket.user }} | {{ post.ticket.time_created }}</p>
@@ -21,7 +21,7 @@
             </div>
     {% else %}
         <div class="ticket">
-            <p>Ticket - {{ post.user }} | {{ post.time_created }}</p>
+            <p>{{ post.user }} a demandé une critique | {{ post.time_created }}</p>
             <p>{{ post.title }}</p>
             <p>{{ post.description }}</p>
             <img src="{{ post.image.url }}">

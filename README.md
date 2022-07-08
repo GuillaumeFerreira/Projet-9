@@ -5,13 +5,17 @@ Application web utilisant le framework Django
 ## Fonctionnalités
 * S'incrire, se connecter, s'abonner
 * Demander ou publier des critiques de livres ou d’articles
+##### créer l'environnement virtuel
+```python 
+python -m venv env
+```
 ##### Activer l'environnement virtuel
 ```python 
-venv\Scripts\activate.bat
+env\Scripts\activate.bat
 ```
 #### Installer les librairies necessaires
 ```python 
-pip install -r requirements.txt
+pip install -r Litreview\requirements.txt
 ```
 #### Lancer le serveur
 ```python

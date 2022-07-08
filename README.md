@@ -1,5 +1,5 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
-# Projet-9 Développez une application Web en utilisant Django
+# Développez une application Web en utilisant Django
 ## Description
 Application web utilisant le framework Django
 ## Fonctionnalités

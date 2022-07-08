@@ -5,7 +5,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 
-
 class UpdateTicketViews(LoginRequiredMixin, UpdateView):
 
     model = models.Ticket
@@ -44,8 +43,6 @@ class CreateReviewFromTicketViews(LoginRequiredMixin, CreateView):
     template_name = "create_Review_from_ticket.html"
     success_url = reverse_lazy("home")
     form_class = forms.ReviewCreateForm
-
-
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

@@ -17,8 +17,6 @@ class Ticket(models.Model):
         self.image.delete()
         return super().delete()
 
-        
-
 
 class Review(models.Model):
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
@@ -29,5 +27,6 @@ class Review(models.Model):
     headline = models.CharField(max_length=128)
     body = models.TextField(max_length=8192, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.headline}"

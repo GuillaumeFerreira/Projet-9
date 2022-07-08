@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-
     path("", profiles.views.LoginPageView.as_view(), name="login"),
     path("logout", profiles.views.LogoutPageView.as_view(), name="logout"),
     path("home/", profiles.views.HomeView.as_view(), name="home"),

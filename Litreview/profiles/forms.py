@@ -8,7 +8,9 @@ from django.contrib.auth.models import User
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["username",]
+        fields = [
+            "username",
+        ]
 
 
 class FollowsForm(Form):
@@ -35,7 +37,9 @@ class FollowsForm(Form):
         else:
 
             self.cleaned_data["search_user"] = User.objects.get(username=search)
-            if models.UserFollows.objects.filter(followed_user=self.cleaned_data["search_user"]).exists():
+            if models.UserFollows.objects.filter(
+                followed_user=self.cleaned_data["search_user"]
+            ).exists():
                 raise ValidationError("Utilisateur déjà abonné")
 
         return self.cleaned_data["search_user"]

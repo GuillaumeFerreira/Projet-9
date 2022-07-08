@@ -1,18 +1,11 @@
-from django.shortcuts import render, redirect
-from django.conf import settings
-from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, DeleteView, View, CreateView
+from django.views.generic import TemplateView, FormView, DeleteView, CreateView
 from . import forms, models
 from ticket.models import Ticket, Review
 from django.urls import reverse_lazy
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, User
-from django.forms import CharField, PasswordInput
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.forms import UserCreationForm
 from itertools import chain
 
 
@@ -27,9 +20,7 @@ class LoginPageView(LoginView):
 
 class LogoutPageView(LogoutView):
 
-    next_page = reverse_lazy('login')
-
-
+    next_page = reverse_lazy("login")
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -41,7 +32,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
         followed_users = models.UserFollows.objects.filter(
             user=self.request.user
-        ).values_list('followed_user_id', flat=True)
+        ).values_list("followed_user_id", flat=True)
 
         reviews = Review.objects.filter(user__in=followed_users).order_by(
             "time_created"
@@ -52,22 +43,17 @@ class HomeView(LoginRequiredMixin, TemplateView):
         )
 
         context["posts"] = sorted(
-            chain(reviews, tickets),
-            key=lambda post: post.time_created,
-            reverse=True
+            chain(reviews, tickets), key=lambda post: post.time_created, reverse=True
         )
 
         return context
 
 
-
 class SignUpView(SuccessMessageMixin, CreateView):
-  template_name = 'signup.html'
-  success_url = reverse_lazy('home')
-  form_class = forms.SignupForm
-  success_message = "%(username)s was created successfully"
-
-
+    template_name = "signup.html"
+    success_url = reverse_lazy("home")
+    form_class = forms.SignupForm
+    success_message = "%(username)s was created successfully"
 
 
 class Followers(LoginRequiredMixin, FormView):

@@ -5,7 +5,7 @@ Application web utilisant le framework Django
 ## Fonctionnalités
 * S'incrire, se connecter, s'abonner
 * Demander ou publier des critiques de livres ou d’articles
-##### créer l'environnement virtuel
+##### Créer l'environnement virtuel
 ```python 
 python -m venv env
 ```

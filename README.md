@@ -17,6 +17,13 @@ env\Scripts\activate.bat
 ```python 
 pip install -r Litreview\requirements.txt
 ```
+#### Configuration base de données
+```python 
+python Litreview\manage.py makemigrations
+```
+```python 
+python Litreview\manage.py migrate
+```
 #### Lancer le serveur
 ```python
 python Litreview\manage.py runserver

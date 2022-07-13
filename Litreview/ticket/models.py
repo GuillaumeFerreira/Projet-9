@@ -4,6 +4,7 @@ from django.conf import settings
 
 
 class Ticket(models.Model):
+    id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=128)
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -19,6 +20,7 @@ class Ticket(models.Model):
 
 
 class Review(models.Model):
+    id = models.BigAutoField(primary_key=True)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)]

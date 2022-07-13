@@ -9,23 +9,36 @@
 
     {% if post.body  %}
           <div id="cont-flux">
-        <p>{{ post.user }} a écrit une critique  | {{ post.time_created }}</p>
-        <p>{{ post.headline }}  {% include "includes/rating.html" with test=post.rating %}</p>
-        <p>{{ post.body }}</p>
-          <div class="ticket">
-                    <p>Ticket - {{ post.ticket.user }} | {{ post.ticket.time_created }}</p>
-                    <p>{{ post.ticket.title }}</p>
-                    <p>{{ post.ticket.description }}</p>
-                    <img src="{{ post.ticket.image.url }}">
-                </div>
-            </div>
+              {% if post.user.id == user.id  %}
+               <p>Vous avez écrit une critique  | {{ post.time_created }}</p>
+              {% else %}
+                <p>{{ post.user }} a écrit une critique  | {{ post.time_created }}</p>
+              {% endif %}
+                <p>{{ post.headline }}  {% include "includes/rating.html" with test=post.rating %}</p>
+                <p>{{ post.body }}</p>
+
+                  <div class="ticket">
+                            <p>Ticket - {{ post.ticket.user }} | {{ post.ticket.time_created }}</p>
+                            <p>{{ post.ticket.title }}</p>
+                            <p>{{ post.ticket.description }}</p>
+                            <img src="{{ post.ticket.image.url }}">
+
+                        </div>
+                    </div>
     {% else %}
         <div class="ticket">
-            <p>{{ post.user }} a demandé une critique | {{ post.time_created }}</p>
+            {% if post.user.id == user.id  %}
+                <p>Vous avez demandé une critique | {{ post.time_created }}</p>
+            {% else %}
+                <p>{{ post.user }} a demandé une critique | {{ post.time_created }}</p>
+            {% endif %}
             <p>{{ post.title }}</p>
             <p>{{ post.description }}</p>
             <img src="{{ post.image.url }}">
-            <a href="{% url 'create_review_from_ticket' post.pk %}">Créer une critique</a>
+
+            {% if post.id not in ticket_id_review  %}
+                <a href="{% url 'create_review_from_ticket' post.pk %}">Créer une critique</a>
+            {% endif %}
         </div>
     {% endif %}
 {% endfor %}

@@ -30,9 +30,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        followed_users = models.UserFollows.objects.filter(
-            user=self.request.user
-        ).values_list("followed_user_id", flat=True)
+        followed_users = models.UserFollows.objects.filter(user=self.request.user).values_list("followed_user_id", flat=True)
 
         reviews = Review.objects.filter(user__in=followed_users).order_by(
             "time_created"
@@ -41,10 +39,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
         tickets = Ticket.objects.filter(user__in=followed_users).order_by(
             "time_created"
         )
-
-        context["posts"] = sorted(
-            chain(reviews, tickets), key=lambda post: post.time_created, reverse=True
+        tickets_user = Ticket.objects.filter(user=self.request.user).order_by(
+            "time_created"
         )
+        reviews_user = Review.objects.filter(user=self.request.user).order_by(
+            "time_created"
+        )
+        context["posts"] = sorted(
+            chain(reviews, tickets, tickets_user,reviews_user), key=lambda post: post.time_created, reverse=True
+        )
+        context["ticket_id_review"] = Review.objects.values_list("ticket_id", flat=True)
 
         return context
 
@@ -53,7 +57,7 @@ class SignUpView(SuccessMessageMixin, CreateView):
     template_name = "signup.html"
     success_url = reverse_lazy("home")
     form_class = forms.SignupForm
-    success_message = "%(username)s was created successfully"
+    success_message = "%(username) a été créé avec succès"
 
 
 class Followers(LoginRequiredMixin, FormView):

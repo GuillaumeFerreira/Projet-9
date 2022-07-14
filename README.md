@@ -12,6 +12,10 @@ git clone https://github.com/GuillaumeFerreira/Projet-9.git
 ```
 ou
 > https://github.com/GuillaumeFerreira/Projet-9/archive/refs/heads/main.zip
+##### Créer l'environnement virtuel
+```
+python -m venv env
+```
 ##### Activer l'environnement virtuel
 ``` 
 env\Scripts\activate.bat

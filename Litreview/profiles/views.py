@@ -30,7 +30,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        followed_users = models.UserFollows.objects.filter(user=self.request.user).values_list("followed_user_id", flat=True)
+        followed_users = models.UserFollows.objects.filter(
+            user=self.request.user
+        ).values_list("followed_user_id", flat=True)
 
         reviews = Review.objects.filter(user__in=followed_users).order_by(
             "time_created"
@@ -46,7 +48,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
             "time_created"
         )
         context["posts"] = sorted(
-            chain(reviews, tickets, tickets_user,reviews_user), key=lambda post: post.time_created, reverse=True
+            chain(reviews, tickets, tickets_user, reviews_user),
+            key=lambda post: post.time_created,
+            reverse=True,
         )
         context["ticket_id_review"] = Review.objects.values_list("ticket_id", flat=True)
 

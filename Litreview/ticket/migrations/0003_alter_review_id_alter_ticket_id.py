@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('ticket', '0002_alter_review_rating'),
+        ("ticket", "0002_alter_review_rating"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='review',
-            name='id',
+            model_name="review",
+            name="id",
             field=models.BigAutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='ticket',
-            name='id',
+            model_name="ticket",
+            name="id",
             field=models.BigAutoField(primary_key=True, serialize=False),
         ),
     ]

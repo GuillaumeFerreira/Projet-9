@@ -4,8 +4,9 @@
 Litreview\env\
 .idea\
 Litreview\env
-Litreview/env
+
 *.pyc
 __pycache__
 *.jpg
 env\
+env

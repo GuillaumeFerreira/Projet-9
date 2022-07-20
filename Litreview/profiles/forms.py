@@ -44,5 +44,4 @@ class FollowsForm(Form):
             ).exists():
                 raise ValidationError("Utilisateur déjà abonné")
 
-
         return self.cleaned_data["search_user"]

@@ -34,6 +34,8 @@ class FollowsForm(Form):
         User = get_user_model()
         if not User.objects.filter(username=search).exists():
             raise ValidationError("L'utilisateur n'existe pas")
+        elif User.objects.filter(username=search)[0] == self.user:
+            raise ValidationError("Vous ne pouvez pas être abonner à vous même")
         else:
 
             self.cleaned_data["search_user"] = User.objects.get(username=search)
@@ -41,5 +43,6 @@ class FollowsForm(Form):
                 followed_user=self.cleaned_data["search_user"]
             ).exists():
                 raise ValidationError("Utilisateur déjà abonné")
+
 
         return self.cleaned_data["search_user"]

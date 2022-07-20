@@ -45,7 +45,7 @@ Le mot de passe est identique pour les deux comptes
 Guillaume46@
 ```
 ### Panel administration
-Vous pouvez accéder au panel d'administration de django avec le lien est l'identifiant suivant:
+Vous pouvez accéder au panel d'administration de django avec le lien et l'identifiant suivant:
 #### Lien:
 > http://127.0.0.1:8000/admin
 #### Identifiant:

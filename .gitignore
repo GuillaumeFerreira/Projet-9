@@ -1,11 +1,11 @@
 .gitignore
 .idea
 .gitattributes
-django-web-app\env\
+Litreview\env\
 .idea\
-django-web-app\env
-django-web-app/env
+Litreview\env
+Litreview/env
 *.pyc
 __pycache__
 *.jpg
-env
+env\

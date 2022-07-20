@@ -30,6 +30,23 @@ python Litreview\manage.py runserver
 ```
 #### Visualiser l'application sur votre navigateur
 > http://127.0.0.1:8000/
+## Tester l'application via l'interface web
+En utilisant la base de données fourni dans le projet, vous pouvez vous identifier avec 2 comptes:
+#### Identifiants:
+> compte-1
+
+> compte-2
+#### Mot de passe:
+Le mot de passe est identique pour les deux comptes
+> Guillaume46@
+### Panel administration
+Vous pouvez accéder au panel d'administration de django avec le lien est l'identifiant suivant:
+#### Lien:
+> http://127.0.0.1:8000/admin
+#### Identifiant:
+>ferreira
+#### Mot de passe:
+> Guillaume46@
 ## Contribuer
 Pour toutes contibutions, veuillez utiliser **black** et **flake8**
 #### Exécuter black
